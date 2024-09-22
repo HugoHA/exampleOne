@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Flores Amarillas &lt;3</title>
+    <link rel="stylesheet" href="Css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inclusive+Sans:ital@1&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="Con-2">
+        <div class="Con">
+
+            <!--<button class="Button" id="B12"> 12 Flores :) </button>-->
+        </div>
+    </div>
+
+    <main class="Contenedor">
+        <canvas id="Flor" class="Flor" width="800" height="600"></canvas>
+
+        <div class="Texto">
+            <h2 id="Text">Para mi corazón ERO, I Love You, cada flor representa 1 mes, y 12 para todo el año, no te me relajes ctmr, tomas tus putas flores amarillas .</h2>
+        </div>
+
+    </main>
+
+    <script src="Js/app.js"></script>
+    <script src="Js/Dis.js"></script>
+    <script>
+        // Definir la función que originalmente estaba en el evento click
+        function ejecutarAccion() {
+            const ContenedorBotones = document.querySelector(".Con");
+            ContenedorBotones.style.display = "none"; // Oculta el contenedor del botón
+            document.querySelector(".Texto").style.display = "block"; // Muestra el elemento con la clase 'Texto'
+            CrearVarias(); // Ejecuta la función CrearVarias
+            h1.remove(); // Elimina el elemento h1 (asegúrate de que h1 esté definido)
+        }
+    
+        // Ejecutar la acción directamente
+        ejecutarAccion();
+    
+        // Opcional: Si deseas eliminar el botón del DOM directamente
+        document.getElementById("B12").remove();
+    </script>
+</body>
+</html>
