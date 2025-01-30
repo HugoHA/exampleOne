@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<!-- saved from url=(0081)https://alignet-3ds-carrito-test.s3.amazonaws.com/Simulador_pasarela_DEV_UAT.html -->
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+	<script src="./Simulador_pasarela_DEV_UAT_files/jquery-3.4.1.min.js.descarga"></script>
+
+	<link rel="stylesheet" href="./Simulador_pasarela_DEV_UAT_files/bootstrap.min.css">
+	<script src="./Simulador_pasarela_DEV_UAT_files/jquery.min.js.descarga"></script>
+	<script src="./Simulador_pasarela_DEV_UAT_files/bootstrap.min.js.descarga"></script>
+	<script src="./Simulador_pasarela_DEV_UAT_files/intlTelInput.min.js"></script>
+	<style>
+
+	</style>
+</head>
+
+
+<body>
+	<div class="container">
+		<div class="page-header" style="padding-bottom: 0px; margin: 5px 5px 5px; border-bottom: 1px solid #eee;">
+
+			<img src="./Simulador_pasarela_DEV_UAT_files/logo.png" class="img-rounded" alt="Cinque Terre"
+				style="width: 631px;display: block; margin: auto;">
+
+		</div>
+		<br>
+		<div class="form-group">
+			<div class="row" id="carritoComercio">
+				<div class="col-lg-offset-3 col-lg-6">
+					<div class="form-group">
+						<label for="sel1">Ambiente:</label>
+						<select class="form-control" id="enviroment" onchange="cargarCommerceData()">
+							<option value="https://uatalgreq.3dsecurekey.cloud/requestor/">Preproduccion</option>
+							<option value="http://localhost:8081/tds-alignet-requestor-rest/api/v2/">DEV</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="sel1">Key :</label>
+						<input type="text" class="form-control" value="4KP375hzfEYrH2mGWEjGQ4LP4ez4mAVC" id="key">
+					</div>
+					<div class="form-group">
+						<label for="sel1">BIN:</label>
+						<input type="text" class="form-control" value="4444" id="BINtrx">
+					</div>
+					<div class="form-group">
+						<label for="sel1">Codigo de Comercio :</label>
+						<input type="text" class="form-control" value="597026007992" id="accMerchantId">
+					</div>
+					<div class="form-group">
+						<label for="sel1">Correo:</label>
+						<input type="text" class="form-control" value="emanuel.janampa@alignet.com" id="correotrax">
+					</div>
+						<div class="form-group">
+							<label for="sel1" class="row col-sm-12 col-md-12 col-lg-12 col-xs-12">Teléfono:</label>
+							<div class="row col-sm-6 col-md-6 col-lg-5 col-xs-6">
+								<select class="form-control" id="prefijo">
+									<option value="51">Seleccion prefijo</option>
+								</select>
+							</div>
+						<div class="row col-sm-6 col-md-6 col-lg-5 col-xs-6">
+							<input type="text" class="form-control" value="942747379" id="numero">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="sel1" class="col-sm-12 col-md-12 col-lg-12 col-xs-12">IP:</label>
+						<input type="text" class="form-control" value="1.12.123.255" id="iptrx">
+					</div>
+					<div class="form-group">
+						<label for="sel1">DETALLE DE LA COMPRA:</label>
+						<img src="./Simulador_pasarela_DEV_UAT_files/logo1.png" class="img-rounded" alt="Cinque Terre"
+							style="width: 810px;display: block; margin: auto;">
+					</div>
+					<div class="form-group">
+						<div class="row col-sm-6 col-md-6 col-lg-4 col-xs-6">
+							<label class="col-sm-12 col-md-12 col-lg-12 col-xs-12">Moneda</label>
+							<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+								<select class="form-control" id="moneda">
+									<option value="604">Soles</option>
+									<option value="840">Dolares</option>
+									<option value="484">Pesos MXN</option>
+									<option value="947">Euros</option>
+									<option value="858">Peso Uruguayo</option>
+									<option value="170">Peso Colombiano</option>
+									<option value="076">Real Brasileño</option>
+									<option value="566">Naira (NGN) Nigeria </option>
+									<option value="784">Dirham (Emiratos Arabes)</option>
+								</select>
+							</div>
+						</div>
+						<div class="row col-sm-6 col-md-6 col-lg-3 col-xs-6">
+							<label class="col-sm-12 col-md-12 col-lg-12 col-xs-12">Monto</label>
+							<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+								<input type="text" class="form-control" maxlength="12" value="350" id="monto">
+							</div>
+						</div>
+						<div class="row col-sm-6 col-md-6 col-lg-4 col-xs-6">
+							<label class="col-sm-12 col-md-12 col-lg-12 col-xs-12">Versión</label>
+							<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+								<select class="form-control" id="version">
+									<option value="2.1.0">2.1.0</option>
+									<option value="2.2.0">2.2.0</option>
+								</select>
+							</div>
+						</div>
+						
+					</div>
+					<br>
+					<br>
+					<br>
+					<div class="form-group">
+						<div class="row col-sm-6 col-md-6 col-lg-3 col-xs-6" style="float:right;">
+							<button class="btn btn-primary" style="background-color: #0042ff"
+								onclick="pagarConTarjeta()">Pagar</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row" id="pagoTarjeta" style="display:none;">
+				<div class="col-lg-offset-3 col-lg-6">
+					<br>
+					<br>
+					<img src="./Simulador_pasarela_DEV_UAT_files/pay-me-logo-300x100.png" class="img-rounded"
+						alt="Cinque Terre" style="width: 107px;display: block; margin: auto;">
+					<div class="form-group">
+						<label class="col-sm-12 col-md-12 col-lg-12 col-xs-12">N° Tarjeta</label>
+						<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12" style="padding-bottom:10px;">
+							<input type="text" class="form-control" placeholder="XXXX-XXXX-XXXX-XXXX"
+								value="" id="cardNumber">
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="row col-sm-6 col-md-6 col-lg-3 col-xs-6">
+							<label class="col-sm-12 col-md-12 col-lg-12 col-xs-12">Mes</label>
+							<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+								<input type="text" class="form-control" maxlength="2" placeholder="mm" id="mesCaducidad"
+									value="12">
+							</div>
+						</div>
+						<div class="row col-sm-6 col-md-1 col-lg-1 col-xs-6" style="padding-top:20px;">
+						</div>
+						<div class="row col-sm-6 col-md-6 col-lg-3 col-xs-6">
+							<label class="col-sm-12 col-md-12 col-lg-12 col-xs-12">Año</label>
+							<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+								<input type="text" class="form-control" maxlength="2" placeholder="aa" id="anoCaducidad"
+									value="26">
+							</div>
+						</div>
+						<div class="row col-sm-6 col-md-6 col-lg-3 col-xs-6">
+						</div>
+						<div class="row col-sm-6 col-md-6 col-lg-3 col-xs-6">
+							<label class="col-sm-12 col-md-12 col-lg-12 col-xs-12">CVV</label>
+							<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+								<input type="password" class="form-control" maxlength="4" placeholder="cvv" id="cvv"
+									value="110">
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="row col-sm-6 col-md-6 col-lg-3 col-xs-6" style="float:right; padding-top:10px;">
+							<button class="btn btn-primary" onclick="versioning()">Pagar</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-offset-1 col-lg-10">
+					<div class="form-group">
+						<div id="panelResultado" style="font-size:20px; font-style:italic; text-align:center;">
+						</div>
+					</div>
+					<iframe id="acsFrame" style="width: 100%;height: 500px; display:none;"
+						src="./Simulador_pasarela_DEV_UAT_files/saved_resource.html"></iframe>
+				</div>
+			</div>
+		</div>
+
+		<div id="panelVersioning" style="display:none;">
+			<h2>
+				<span class="label label-default">Envio de Mensaje Versioning </span>
+			</h2>
+			<pre id="versioning"></pre>
+			<div class="form-group">
+				<h2>
+					<span class="label label-default">Respuesta del Versioning</span>
+				</h2>
+			</div>
+			<pre id="mensajeVersioning"></pre>
+		</div>
+		<div id="panelAutentication" style="display:none;">
+			<h2>
+				<span class="label label-default">Envio de Mensaje PARQ </span>
+			</h2>
+			<pre id="parks"></pre>
+			<div class="form-group">
+				<h2>
+					<span class="label label-default">Respuesta del Primer Mensaje PARS</span>
+				</h2>
+			</div>
+			<pre id="primerMensaje"></pre>
+		</div>
+		<div id="panelChallenge" style="display:none;">
+			<h2>
+				<span class="label label-default">Envio de Mensaje PGCQ </span>
+			</h2>
+			<pre id="segundoMensaje"></pre>
+		</div>
+	</div>
+
+
+
+	<script type="text/javascript">
+
+		function pagarConTarjeta() {
+			$("#carritoComercio").hide();
+			$("#pagoTarjeta").show();
+		}
+
+		function versioning() {
+			$("#pagoTarjeta").hide();
+			$("#panelResultado").html("Validando versioning ....<img style='width:100px;' src='https://static.wixstatic.com/media/29220c_7dd1695378d640b89daf23e02443a780~mv2.gif'>");
+			$("#panelVersioning").show();
+			var keyText = $('#key').val();
+			console.log("key " + keyText);
+
+			var urlEnviroment = $("#enviroment").val() + "versioning";
+			console.log("urlEnviroment " + urlEnviroment);
+
+			var versioningDataJson = {};
+			versioningDataJson["acctNumber"] = $("#cardNumber").val();
+			versioningDataJson["acquirerMerchantID"] = $("#accMerchantId").val();//"9876543210001";
+			var versioningDataJsonParse = JSON.stringify(versioningDataJson);
+			console.log("Antes de enviar el versioningDataJson : " + versioningDataJsonParse);
+			document.getElementById("versioning").innerHTML = JSON.stringify(versioningDataJson, undefined, 2);
+
+			$.ajax({
+				type: "POST",
+				//url: "https://uatrequestor.3dsecurekey.cloud/tds-alignet-requestor-rest/api/v2/threeDSVersioning",
+				url: urlEnviroment,
+				headers: {
+					'key': keyText,
+					'Content-Type': 'application/json'
+				},
+				data: versioningDataJsonParse,
+				contentType: "application/json; charset=utf-8",
+				crossDomain: true,
+				dataType: "json",
+				success: function (data, status, jqXHR) {
+					var jsonString = JSON.stringify(data)
+					var jsonConvertedData = JSON.parse(jsonString);
+
+					if (jsonConvertedData["threeDSServerTransID"] != null) {
+						console.log("**** : " + jsonConvertedData["threeDSServerTransID"]);
+					}
+					document.getElementById("mensajeVersioning").innerHTML = JSON.stringify(data, undefined, 2);
+
+					if (data.versioningStatus) {
+						authentication();
+					} else {
+						$("#panelResultado").html("Error en el versioning :" + data.meta.status.message_ilgn[0].value);
+					}
+				},
+				error: function (jqXHR, status) {
+					console.log(jqXHR);
+					$("#panelResultado").html('ocurrio un error en el versioning');
+					$("#panelVersioning").hide();
+				}
+			});
+		}
+
+
+		function authentication() {
+
+			$("#panelResultado").html("Autenticando ... <img style='width:100px;' src='https://static.wixstatic.com/media/29220c_7dd1695378d640b89daf23e02443a780~mv2.gif'>")
+			$("#panelVersioning").hide();
+			$("#panelAutentication").show();
+			var urlEnviroment = $("#enviroment").val() + "authentication";
+			console.log("urlEnviroment " + urlEnviroment);
+
+			var message = $('#mensajeVersioning').text();
+			var jsonConvertedData = JSON.parse(message);
+			var threeDSServerTransIDsTring = jsonConvertedData["threeDSServerTransID"];
+			console.log("threeDSServerTransIDsTring : " + threeDSServerTransIDsTring);
+
+			var datosJsonParse = retornaJsonPe();
+			var authenticactionDataJsonParse = JSON.stringify(datosJsonParse);
+			console.log("Antes de enviar el authenticationDataJson : " + authenticactionDataJsonParse);
+			document.getElementById("parks").innerHTML = JSON.stringify(datosJsonParse, undefined, 2);
+
+			var keyText = $('#key').val();
+			console.log("key " + keyText);
+
+			var accMerchantId = $('#accMerchantId').val();
+			//var accMerchantId = '\"accMerchantId\"' ;
+			console.log("accMerchantId : " + accMerchantId);
+
+
+			$.ajax({
+				type: "POST",
+				//  url: "https://uatrequestor.3dsecurekey.cloud/tds-alignet-requestor-rest/api/v2/authentication",
+				url: urlEnviroment,
+				headers: {
+					'Authorization': keyText, // No transbank
+					'key': keyText,
+					'threeDSServerTransID': threeDSServerTransIDsTring,
+					'Content-Type': 'application/json'
+				},
+				data: authenticactionDataJsonParse,
+				contentType: "application/json; charset=utf-8",
+				crossDomain: true,
+				dataType: "json",
+				success: function (data, status, jqXHR) {
+					var jsonString = JSON.stringify(data)
+					var jsonConvertedData = JSON.parse(jsonString);
+					var transStatus = jsonConvertedData["transStatus"];
+					document.getElementById("primerMensaje").innerHTML = JSON.stringify(data, undefined, 2);
+					if (transStatus == 'C') {
+						$('#resultado').text("Transacción con challenge cargando challenge ... <img style='width:100px;' src='https://static.wixstatic.com/media/29220c_7dd1695378d640b89daf23e02443a780~mv2.gif'>");
+						//$("#panelAutentication").hide();
+						pgcq()
+					} else if (transStatus == 'Y') {
+						$('#panelResultado').text("¡Se ha autenticado de manera exitosa!");
+						setTimeout(function () {
+							//$("#panelAutentication").hide();
+						}, 5000)
+					} else {
+						$('#panelResultado').text("¡Fin de la autenticacion  transStatus = " + transStatus + "!");
+						setTimeout(function () {
+							//$("#panelAutentication").hide();
+						}, 5000)
+					}
+					if (transStatus != 'C') {
+						loadParsAsTable(jsonConvertedData);
+					}
+
+				},
+				error: function (jqXHR, status) {
+					console.log(jqXHR);
+					$("#panelResultado").html('Ocurrio un error en la autenticacion - fail ' + status.code);
+					//$("#panelAutentication").hide();
+				}
+			});
+		}
+
+		function pgcq() {
+			//$("#panelAutentication").hide();
+			$("#panelChallenge").show();
+			var urlEnviroment = $("#enviroment").val() + "authentication";
+			var message = $('#primerMensaje').text();
+			var jsonConvertedData = JSON.parse(message);
+			var pgcqData = {};
+			pgcqData["threeDSServerTransID"] = jsonConvertedData["threeDSServerTransID"];
+			pgcqData["acsTransID"] = jsonConvertedData["acsTransID"];
+			pgcqData["messageType"] = "Pgcq";
+			pgcqData["messageVersion"] = "2.1.0";
+			var challengeWindowSize = $("#challengeWindowSize").val()
+			if (challengeWindowSize != "") {
+				pgcqData["challengeWindowSize"] = challengeWindowSize;
+			}
+			console.log("Antes de enviar el pgcq" + JSON.stringify(pgcqData));
+
+			document.getElementById("segundoMensaje").innerHTML = JSON.stringify(pgcqData, undefined, 2);
+
+			var keyText = $('#key').val();
+			console.log("key " + keyText);
+
+			$.ajax({
+				type: "POST",
+				url: urlEnviroment,
+				headers: {
+					'Authorization': keyText, // No transbank
+					'key': keyText,
+					'Content-Type': 'application/json'
+				},
+				data: JSON.stringify(pgcqData),
+				contentType: "application/json; charset=utf-8",
+				crossDomain: true,
+				dataType: "text",
+				success: function (data, status, jqXHR) {
+					console.log("Exitoso");
+					console.log(data);
+					//$("#panelResultado").html("Por favor ingresar el codigo enviado a su celular/email")
+					$("#panelResultado").html("Challenge OTP")
+					$("#acsFrame").show();
+					var myFrame = $("#acsFrame").contents().find('body');
+					myFrame.html(data);
+					$("#panelChallenge").hide();
+				},
+				error: function (jqXHR, status) {
+					console.log("Que mierda paso " + status);
+					console.log(jqXHR);
+					alert('fail ' + status.code);
+				}
+			});
+
+		}
+
+		function loadParsAsTable(parsObject) {
+			$("#acsFrame").show();
+			var myFrame = $("#acsFrame").contents().find('body');
+			myFrame.append("<h3>RESPUESTA FINAL: </H3>")
+			var fields = ["threeDSServerTransID", "acsTransID", "messageType", "messageVersion", "transStatus", "eci", "vci", "authenticationValue"]
+			var tableHtml = "<table border='1'>";
+			for (var i = 0; i < fields.length; i++) {
+				if (parsObject[fields[i]]) {
+					tableHtml = tableHtml + "<tr><td>" + fields[i] + "</td><td>" + parsObject[fields[i]] + "</td></tr>";
+				}
+			}
+			tableHtml = tableHtml + "</table>";
+			myFrame.append(tableHtml);
+		}
+		var select = document.getElementById("prefijo");
+		var allCountries = [["Afghanistan", "af", "93"], ["Albania", "al", "355"], ["Algeria", "dz", "213"], ["American Samoa", "as", "1", 5, ["684"]], ["Andorra", "ad", "376"], ["Angola", "ao", "244"], ["Anguilla", "ai", "1", 6, ["264"]], ["Antigua and Barbuda", "ag", "1", 7, ["268"]], ["Argentina", "ar", "54"], ["Armenia", "am", "374"], ["Aruba", "aw", "297"], ["Ascension Island", "ac", "247"], ["Australia", "au", "61", 0], ["Austria", "at", "43"], ["Azerbaijan", "az", "994"], ["Bahamas", "bs", "1", 8, ["242"]], ["Bahrain", "bh", "973"], ["Bangladesh", "bd", "880"], ["Barbados", "bb", "1", 9, ["246"]], ["Belarus", "by", "375"], ["Belgium", "be", "32"], ["Belize", "bz", "501"], ["Benin", "bj", "229"], ["Bermuda", "bm", "1", 10, ["441"]], ["Bhutan", "bt", "975"], ["Bolivia", "bo", "591"], ["Bosnia and Herzegovina", "ba", "387"], ["Botswana", "bw", "267"], ["Brazil", "br", "55"], ["British Indian Ocean Territory", "io", "246"], ["British Virgin Islands", "vg", "1", 11, ["284"]], ["Brunei", "bn", "673"], ["Bulgaria", "bg", "359"], ["Burkina Faso", "bf", "226"], ["Burundi", "bi", "257"], ["Cambodia", "kh", "855"], ["Cameroon", "cm", "237"], ["Canada", "ca", "1", 1, ["204", "226", "236", "249", "250", "289", "306", "343", "365", "387", "403", "416", "418", "431", "437", "438", "450", "506", "514", "519", "548", "579", "581", "587", "604", "613", "639", "647", "672", "705", "709", "742", "778", "780", "782", "807", "819", "825", "867", "873", "902", "905"]], ["Cape Verde", "cv", "238"], ["Caribbean Netherlands", "bq", "599", 1, ["3", "4", "7"]], ["Cayman Islands", "ky", "1", 12, ["345"]], ["Central African Republic", "cf", "236"], ["Chad", "td", "235"], ["Chile", "cl", "56"], ["China", "cn", "86"], ["Christmas Island", "cx", "61", 2, ["89164"]], ["Cocos Islands", "cc", "61", 1, ["89162"]], ["Colombia", "co", "57"], ["Comoros", "km", "269"], ["Congo", "cd", "243"], ["Congo", "cg", "242"], ["Cook Islands", "ck", "682"], ["Costa Rica", "cr", "506"], ["Côte d’Ivoire", "ci", "225"], ["Croatia", "hr", "385"], ["Cuba", "cu", "53"], ["Curaçao", "cw", "599", 0], ["Cyprus", "cy", "357"], ["Czech Republic", "cz", "420"], ["Denmark", "dk", "45"], ["Djibouti", "dj", "253"], ["Dominica", "dm", "1", 13, ["767"]], ["Dominican Republic", "do", "1", 2, ["809", "829", "849"]], ["Ecuador", "ec", "593"], ["Egypt", "eg", "20"], ["El Salvador", "sv", "503"], ["Equatorial Guinea", "gq", "240"], ["Eritrea", "er", "291"], ["Estonia", "ee", "372"], ["Eswatini", "sz", "268"], ["Ethiopia", "et", "251"], ["Falkland Islands", "fk", "500"], ["Faroe Islands", "fo", "298"], ["Fiji", "fj", "679"], ["Finland", "fi", "358", 0], ["France", "fr", "33"], ["French Guiana", "gf", "594"], ["French Polynesia", "pf", "689"], ["Gabon", "ga", "241"], ["Gambia", "gm", "220"], ["Georgia", "ge", "995"], ["Germany", "de", "49"], ["Ghana", "gh", "233"], ["Gibraltar", "gi", "350"], ["Greece", "gr", "30"], ["Greenland", "gl", "299"], ["Grenada", "gd", "1", 14, ["473"]], ["Guadeloupe", "gp", "590", 0], ["Guam", "gu", "1", 15, ["671"]], ["Guatemala", "gt", "502"], ["Guernsey", "gg", "44", 1, ["1481", "7781", "7839", "7911"]], ["Guinea", "gn", "224"], ["Guinea-Bissau", "gw", "245"], ["Guyana", "gy", "592"], ["Haiti", "ht", "509"], ["Honduras", "hn", "504"], ["Hong Kong", "hk", "852"], ["Hungary", "hu", "36"], ["Iceland", "is", "354"], ["India", "in", "91"], ["Indonesia", "id", "62"], ["Iran", "ir", "98"], ["Iraq", "iq", "964"], ["Ireland", "ie", "353"], ["Isle of Man", "im", "44", 2, ["1624", "74576", "7524", "7924", "7624"]], ["Israel", "il", "972"], ["Italy", "it", "39", 0], ["Jamaica", "jm", "1", 4, ["876", "658"]], ["Japan", "jp", "81"], ["Jersey", "je", "44", 3, ["1534", "7509", "7700", "7797", "7829", "7937"]], ["Jordan", "jo", "962"], ["Kazakhstan", "kz", "7", 1, ["33", "7"]], ["Kenya", "ke", "254"], ["Kiribati", "ki", "686"], ["Kosovo", "xk", "383"], ["Kuwait", "kw", "965"], ["Kyrgyzstan", "kg", "996"], ["Laos", "la", "856"], ["Latvia", "lv", "371"], ["Lebanon", "lb", "961"], ["Lesotho", "ls", "266"], ["Liberia", "lr", "231"], ["Libya", "ly", "218"], ["Liechtenstein", "li", "423"], ["Lithuania", "lt", "370"], ["Luxembourg", "lu", "352"], ["Macau", "mo", "853"], ["North Macedonia", "mk", "389"], ["Madagascar", "mg", "261"], ["Malawi", "mw", "265"], ["Malaysia", "my", "60"], ["Maldives", "mv", "960"], ["Mali", "ml", "223"], ["Malta", "mt", "356"], ["Marshall Islands", "mh", "692"], ["Martinique", "mq", "596"], ["Mauritania", "mr", "222"], ["Mauritius", "mu", "230"], ["Mayotte", "yt", "262", 1, ["269", "639"]], ["Mexico", "mx", "52"], ["Micronesia", "fm", "691"], ["Moldova", "md", "373"], ["Monaco", "mc", "377"], ["Mongolia", "mn", "976"], ["Montenegro", "me", "382"], ["Montserrat", "ms", "1", 16, ["664"]], ["Morocco", "ma", "212", 0], ["Mozambique", "mz", "258"], ["Myanmar", "mm", "95"], ["Namibia", "na", "264"], ["Nauru", "nr", "674"], ["Nepal", "np", "977"], ["Netherlands", "nl", "31"], ["New Caledonia", "nc", "687"], ["New Zealand", "nz", "64"], ["Nicaragua", "ni", "505"], ["Niger", "ne", "227"], ["Nigeria", "ng", "234"], ["Niue", "nu", "683"], ["Norfolk Island", "nf", "672"], ["North Korea", "kp", "850"], ["Northern Mariana Islands", "mp", "1", 17, ["670"]], ["Norway", "no", "47", 0], ["Oman", "om", "968"], ["Pakistan", "pk", "92"], ["Palau", "pw", "680"], ["Palestine", "ps", "970"], ["Panama", "pa", "507"], ["Papua New Guinea", "pg", "675"], ["Paraguay", "py", "595"], ["Peru", "pe", "51"], ["Philippines", "ph", "63"], ["Poland", "pl", "48"], ["Portugal", "pt", "351"], ["Puerto Rico", "pr", "1", 3, ["787", "939"]], ["Qatar", "qa", "974"], ["Réunion", "re", "262", 0], ["Romania", "ro", "40"], ["Russia", "ru", "7", 0], ["Rwanda", "rw", "250"], ["Saint Barthélemy", "bl", "590", 1], ["Saint Helena", "sh", "290"], ["Saint Kitts and Nevis", "kn", "1", 18, ["869"]], ["Saint Lucia", "lc", "1", 19, ["758"]], ["Saint Martin", "mf", "590", 2], ["Saint Pierre and Miquelon", "pm", "508"], ["Saint Vincent and the Grenadines", "vc", "1", 20, ["784"]], ["Samoa", "ws", "685"], ["San Marino", "sm", "378"], ["São Tomé and Príncipe", "st", "239"], ["Saudi Arabia", "sa", "966"], ["Senegal", "sn", "221"], ["Serbia", "rs", "381"], ["Seychelles", "sc", "248"], ["Sierra Leone", "sl", "232"], ["Singapore", "sg", "65"], ["Sint Maarten", "sx", "1", 21, ["721"]], ["Slovakia", "sk", "421"], ["Slovenia", "si", "386"], ["Solomon Islands", "sb", "677"], ["Somalia", "so", "252"], ["South Africa", "za", "27"], ["South Korea", "kr", "82"], ["South Sudan", "ss", "211"], ["Spain", "es", "34"], ["Sri Lanka", "lk", "94"], ["Sudan", "sd", "249"], ["Suriname", "sr", "597"], ["Svalbard and Jan Mayen", "sj", "47", 1, ["79"]], ["Sweden", "se", "46"], ["Switzerland", "ch", "41"], ["Syria", "sy", "963"], ["Taiwan", "tw", "886"], ["Tajikistan", "tj", "992"], ["Tanzania", "tz", "255"], ["Thailand", "th", "66"], ["Timor-Leste", "tl", "670"], ["Togo", "tg", "228"], ["Tokelau", "tk", "690"], ["Tonga", "to", "676"], ["Trinidad and Tobago", "tt", "1", 22, ["868"]], ["Tunisia", "tn", "216"], ["Turkey", "tr", "90"], ["Turkmenistan", "tm", "993"], ["Turks and Caicos Islands", "tc", "1", 23, ["649"]], ["Tuvalu", "tv", "688"], ["U.S. Virgin Islands", "vi", "1", 24, ["340"]], ["Uganda", "ug", "256"], ["Ukraine (Україна)", "ua", "380"], ["United Arab Emirates", "ae", "971"], ["United Kingdom", "gb", "44", 0], ["United States", "us", "1", 0], ["Uruguay", "uy", "598"], ["Uzbekistan", "uz", "998"], ["Vanuatu", "vu", "678"], ["Vatican City", "va", "39", 1, ["06698"]], ["Venezuela", "ve", "58"], ["Vietnam", "vn", "84"], ["Wallis and Futuna", "wf", "681"], ["Western Sahara", "eh", "212", 1, ["5288", "5289"]], ["Yemen", "ye", "967"], ["Zambia", "zm", "260"], ["Zimbabwe", "zw", "263"], ["Åland Islands", "ax", "358", 1, ["18"]]];
+
+		for (var i = 0; i < allCountries.length; i++) {
+			var optn = allCountries[i];
+			var el = document.createElement("option");
+			el.textContent = optn[0] + " (+" + optn[2] + ")";
+			el.value = optn[2];
+			select.appendChild(el);
+		}
+
+		function retornaJsonPe() {
+
+
+
+			var pgcqData = {};
+
+			//    pgcqData["threeDSServerTransID"] = jsonConvertedData["threeDSServerTransID"];
+			//      pgcqData["acsTransID"] = jsonConvertedData["acsTransID"];
+
+			pgcqData["messageType"] = "pArq";
+			pgcqData["acctNumber"] = $("#cardNumber").val();
+			pgcqData["cardExpiryDate"] = $("#anoCaducidad").val() + $("#mesCaducidad").val();
+			pgcqData["deviceChannel"] = "02";
+			pgcqData["messageCategory"] = "01";
+			pgcqData["messageVersion"] = "2.1.0";
+			pgcqData["threeDSRequestorAuthenticationInd"] = "01";
+			//pgcqData["threeDSRequestorChallengeInd"] = $("#threeDSRequestorChallengeInd").val();// "04";
+
+			pgcqData["acquirerBIN"] = $('#BINtrx').val();
+			pgcqData["acquirerMerchantID"] = $('#accMerchantId').val(); //"597026007992";
+			pgcqData["cardholderName"] = "Challenge One";
+			pgcqData["purchaseNumber"] = "100010";
+			pgcqData["purchaseAmount"] = $("#monto").val();
+			pgcqData["purchaseCurrency"] = $("#moneda").val();
+			pgcqData["purchaseExponent"] = "2";
+			pgcqData["purchaseDate"] = "20190523061226";
+			pgcqData["notificationURL"] = "https://multimarca.3dsecurekey.cloud/3dss-requestor-rest/api/v2/demo_response_cres_rreq", //"http://localhost:8081/tds-alignet-requestor-rest/api/v2/response";
+				pgcqData["email"] = $("#correotrax").val();
+			pgcqData["mobilePhone"] = { "cc": $("#prefijo").val(), "subscriber": $("#numero").val() };
+			pgcqData["browserAcceptHeader"] = "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8";
+			pgcqData["browserIP"] = $("#iptrx").val();
+			pgcqData["browserJavaEnabled"] = "true";
+			var version = $("#version").val();
+			pgcqData["messageVersion"] = version;
+			if (version == "2.2.0"){
+				pgcqData["browserJavascriptEnabled"] = "true";
+			}
+			
+			pgcqData["browserLanguage"] = "en";
+			pgcqData["browserColorDepth"] = "32";
+			pgcqData["browserScreenHeight"] = "1920";
+			pgcqData["browserScreenWidth"] = "1080";
+
+			pgcqData["browserTZ"] = "0";
+			pgcqData["browserUserAgent"] = "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:47.0) Gecko/20100101 Firefox/47.0";
+			
+			//add fields requireds visa 
+			var pattern_visa = /^4[0-9]{12}(?:[0-9]{3})?$/;
+			var pattern_mscd = /^(?:5[1-5][0-9]{2}|222[1-9]|22[3-9][0-9]|2[3-6][0-9]{2}|27[01][0-9]|2720)[0-9]{12}$/;
+			var pattern_amex = /^3[47][0-9]{13}$/;
+			var pattern_diners = /^3(?:0[0-5]|[68][0-9])[0-9]{11}$/;
+			
+			var homePhone = {};
+			var workPhone = {};
+			var mobilePhone = {};
+			if(pgcqData["acctNumber"].match(pattern_visa)){
+				pgcqData["browserIP"] = "127.0.0.1";
+				pgcqData["browserScreenHeight"] = "926";
+				pgcqData["browserScreenWidth"] = "428";
+				pgcqData["billAddrCity"] = "Lima-Miraflores";
+				pgcqData["billAddrCountry"] = "604";
+				pgcqData["billAddrLine1"] = "Line 01";
+				pgcqData["billAddrPostCode"] = "Lima 01";
+				pgcqData["billAddrState"] = "PER";
+				pgcqData["email"] = "userAlignet@alignet.com";
+				pgcqData["cardholderName"] = "User Alignet";
+				homePhone["cc"] = "51";
+				homePhone["subscriber"] = "1234567";
+				workPhone["cc"] = "51";
+				workPhone["subscriber"] = "7654321";
+				mobilePhone["cc"] = "51";
+				mobilePhone["subscriber"] = "987654321";
+				pgcqData["homePhone"] = homePhone;
+				pgcqData["workPhone"] = workPhone;
+				pgcqData["mobilePhone"] = mobilePhone;
+			}
+
+			var parsJsonPrro = JSON.stringify(pgcqData);
+
+
+			console.log("parse : " + parsJsonPrro);
+
+
+			return pgcqData;
+
+			//            console.log("Antes de enviar el pgcq" +JSON.stringify(pgcqData) );
+
+
+		}
+		function b64_to_utf8(str) {
+			return decodeURIComponent(escape(window.atob(str)));
+		}
+		function cargarCommerceData() {
+			var enviromentName = $("#enviroment option:selected").text();
+			var accMerchantId = enviromentCommerce[enviromentName]["commerce"];
+			$("#accMerchantId").val(accMerchantId);
+			var keyValue = enviromentCommerce[enviromentName]["key"];
+			$("#key").val(keyValue);
+		}
+
+		var enviromentCommerce = {
+			"Preproduccion": {
+				"commerce": "229966",//"M00215",
+				"key": "3HoBhxh3rN3eDQSg.YQ4antdegbkv4Ngyc5M0521iWbSoZtX6I7jIrFH1Xu06FjbLNiYUolCGRltyapfG"//"NCOno3be1tjkPywc.lLp2G8JU4HjOvr4Y6ZHLx8h02OqIfXaiMKtkkg2Rzb4gTchIjrneN2IpTYPUvRsk"//"IZ5RsD9g3J8eZQh6.EMScmwBjI3AlgT8VbZ690OjtPeqvXwQGbmkztxmPu7P10Q4u4098To9MHbOcjXaO"//"RlbEqHnGw4zMTZNqw8lsN4po0TF6kHOa"
+			},
+			"DEV": {
+				"commerce": "597026007992",
+				"key": "4KP375hzfEYrH2mGWEjGQ4LP4ez4mAVC"
+			}
+		}
+		cargarCommerceData();
+	</script>
+
+</body>
+</script>
+
+</html>
